@@ -1,4 +1,5 @@
 from bs4 import BeautifulSoup
+from pathlib import Path
 import os
 import pytest
 import requests
@@ -53,6 +54,8 @@ def get_filename(filename):
     """
     current_directory = os.path.dirname(__file__)
     report_directory = os.path.join(current_directory, 'test\\reports\\')
+    Path(report_directory).mkdir(parents=True, exist_ok=True)
     timestamp = time.strftime("%Y%m%d_%H%M%S")
+    
     return ''.join([report_directory, filename, '_', timestamp,'.txt'])
 

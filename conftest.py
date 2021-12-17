@@ -11,7 +11,7 @@ def get_site_url():
     Get url list from txt file.
     """
     current_directory = os.path.dirname(__file__)
-    in_data_file = os.path.join(current_directory, 'test\\resources\\test_sitemap_in_data.txt')
+    in_data_file = os.path.join(current_directory, 'test', 'resources', 'test_sitemap_in_data.txt')
     with open(in_data_file, 'r') as the_file:
         return the_file.readlines()
 
@@ -53,9 +53,9 @@ def get_filename(filename):
     :param str filename: filename pattern
     """
     current_directory = os.path.dirname(__file__)
-    report_directory = os.path.join(current_directory, 'test\\reports\\')
+    report_directory = os.path.join(current_directory, 'test', 'reports')
     Path(report_directory).mkdir(parents=True, exist_ok=True)
     timestamp = time.strftime("%Y%m%d_%H%M%S")
     
-    return ''.join([report_directory, filename, '_', timestamp,'.txt'])
+    return os.path.join(report_directory, ''.join([filename, '_', timestamp,'.txt']))
 
